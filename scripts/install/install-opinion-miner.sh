@@ -39,31 +39,30 @@ echo
 
 
 #Install SVM_LIGHT
-mkdir svm_light
+mkdir -p svm_light
 cd svm_light
-wget http://download.joachims.org/svm_light/current/svm_light.tar.gz
-gunzip -c svm_light.tar.gz | tar xvf -
+wget -c -N http://download.joachims.org/svm_light/current/svm_light.tar.gz
+tar zxvf svm_light.tar.gz
+# patch compile error
+sed -i.orig "s/long verbosity;//" svm_hideo.c
 make
-rm svm_light.tar.gz
 cd ..
 
 
 ##Download the models
 echo Downloading the trained models
-mkdir models
+mkdir -p models
 cd models
-wget http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/hotel/models_hotel_nl.tgz
-wget http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/news/models_news_nl.tgz
-wget http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/model_nl_hotel_news.tgz
+wget -c -N http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/hotel/models_hotel_nl.tgz
+wget -c -N http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/news/models_news_nl.tgz
+wget -c -N http://kyoto.let.vu.nl/~izquierdo/public/models_opinion_miner_deluxePP/model_nl_hotel_news.tgz
 tar xvzf models_hotel_nl.tgz
 tar xvzf models_news_nl.tgz
 tar xvzf model_nl_hotel_news.tgz
 mv model_nl_hotel_news models_hotelnews_nl
-rm *tgz
 cd ..
 
-wget http://kyoto.let.vu.nl/~izquierdo/public/polarity_models.tgz
+wget -c -N http://kyoto.let.vu.nl/~izquierdo/public/polarity_models.tgz
 tar xvzf polarity_models.tgz
-rm polarity_models.tgz
 
 echo "All done"

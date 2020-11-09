@@ -17,7 +17,9 @@ commit_nb=$2
 targetdir=$3
 module=$(basename ${github_sfx})
 
-$scriptdir/get-from-git.sh $github_sfx $commit_nb $targetdir
+if [! -d $targetdir ]; then
+  $scriptdir/get-from-git.sh $github_sfx $commit_nb $targetdir
+fi
 cd $targetdir/$module
 pip install -r requirements.txt
 ./scripts/setup_all.sh

@@ -24,12 +24,12 @@ resourcesdir=$3
 
 #------------------------------------------------
 
-mkdir $resourcesdir/nerc-models
+mkdir -p $resourcesdir/nerc-models
 # get and package module ------------
-cd $scratch
+wget -c -N http://ixa2.si.ehu.es/ixa-pipes/models/ixa-pipes-${version}.tar.gz
 
-wget http://ixa2.si.ehu.es/ixa-pipes/models/ixa-pipes-${version}.tar.gz 
 tar -zxvf ixa-pipes-${version}.tar.gz
 mv ixa-pipes-${version}/*nerc*.jar $target_dir
 mv ixa-pipes-${version}/*tok*.jar $target_dir
 mv ixa-pipes-${version}/nerc-models*/nl/*.bin $resourcesdir/nerc-models/
+rm -rf ixa-pipes-${version}

@@ -23,7 +23,7 @@ commit_nb=$2
 target_dir=$3
 #------------------------------------------------
 
-mkdir $target_dir
+mkdir -p $target_dir
 # get module ------------
 cd $scratch
 echo "cloning https://github.com/${github_sfx}.git"

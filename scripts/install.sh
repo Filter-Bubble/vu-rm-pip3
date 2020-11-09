@@ -65,9 +65,9 @@ function install-stanza {
 
 function install-mor {
   echo "Installing the Alpino parser and wrapper ..."
-  #$scriptdir/install-alpino.sh http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/${v_alpino}.tar.gz $resourcesdir/Alpino
-  $scriptdir/get-from-git.sh Filter-Bubble/morphosyntactic_parser_nl master $pythondir
-  docker pull rugcompling/alpino:latest
+#  $scriptdir/install-alpino.sh http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/${v_alpino}.tar.gz $resourcesdir/Alpino
+#  #$scriptdir/get-from-git.sh Filter-Bubble/morphosyntactic_parser_nl master $pythondir
+#  #docker pull rugcompling/alpino:latest
   echo "Finished installing the Alpino wrapper."
 }
 
@@ -86,14 +86,13 @@ function install-ixa-pipes {
 function install-ned {
   echo "Installing NED and dbpedia resources ..."
   wdir=$resourcesdir/spotlight
-  mkdir $wdir
+  mkdir -p $wdir
   cd $wdir
-  wget http://sourceforge.net/projects/dbpedia-spotlight/files/2016-04/nl/model/nl.tar.gz
+  wget -c -N http://sourceforge.net/projects/dbpedia-spotlight/files/2016-04/nl/model/nl.tar.gz
   tar -zxvf nl.tar.gz
-  wget http://ixa2.si.ehu.es/ixa-pipes/models/wikipedia-db.tar.gz
+  wget -c -N http://ixa2.si.ehu.es/ixa-pipes/models/wikipedia-db.tar.gz
   tar -xzvf wikipedia-db.tar.gz
-  rm *tar.gz
-  wget https://sourceforge.net/projects/dbpedia-spotlight/files/spotlight/dbpedia-spotlight-${v_dbpedia_spotlight}.jar
+  wget -c -N https://sourceforge.net/projects/dbpedia-spotlight/files/spotlight/dbpedia-spotlight-${v_dbpedia_spotlight}.jar
   mvn install:install-file -Dfile=dbpedia-spotlight-${v_dbpedia_spotlight}.jar -DgroupId=ixa -DartifactId=dbpedia-spotlight -Dversion=0.7 -Dpackaging=jar -DgeneratePom=true
   $scriptdir/install-ned.sh ixa-ehu/ixa-pipe-ned $v_ixa_pipe_ned $javadir $utildir
   echo "Finished installing NED module."

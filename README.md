@@ -11,6 +11,14 @@ You will find detailed installation and usage instructions in the [documentation
 
 ## Quick start
 ### Linux
+
+Install the following external dependencies:
+* maven
+* xslt-config (libxml2, xslt)
+* python3; 3.8 works, 3.9 is too new. If you have errors involving CUDA, do
+  ```USE\_CUDA=0 pip install -f cfg/requirements.txt```
+
+
 Clone the repository:
    
     git clone https://github.com/cltl/vu-rm-pip3.git
@@ -18,6 +26,12 @@ Clone the repository:
 Set up a python 3 environment and install `requirements.txt`, then run the script `install.sh` to install the components of the Dutch NewsReader pipeline: 
 
     ./scripts/install.sh
+
+Fix the issues during installation:
+* the SVM\_light package has a multiple definition of 'verbosity'; remove the
+  one from *lib/python/opinion_miner_deluxePP/svm_light/svm_hideo.c* line 34
+* TODO: check if file exists before redownloading *cc.nl.300.vec.gz* in
+  e2e-Dutch setup_all.sh
 
 The script `run-pipeline.sh` allows to run the pipeline on a raw text document to produce a fully annotated NAF document:
     

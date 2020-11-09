@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-IFS=$'\n\t' 
+IFS=$'\n\t'
 
 link=$1
 targetdir=$2
@@ -13,16 +13,17 @@ finish() {
 }
 trap finish EXIT
 
-cd $scratch
-wget $link
-tar -xzvf $module 
+mkdir -p $targetdir
+cd $targetdir
 
-mkdir $targetdir
+wget -c -N $link
+tar -xzvf $module
 
-for d in Alpino/*
-do
-  if [ "$d" != "Treebank" ] && [ "$d" != "TreebankTools" ] && [ "$d" != "Tokenization" ] && [ "$d" != "Generation" ]; then
-    mv $d $targetdir
-  fi
-done
+#for d in Alpino/*
+#do
+#  if [ "$d" != "Treebank" ] && [ "$d" != "TreebankTools" ] && [ "$d" != "Tokenization" ] && [ "$d" != "Generation" ]; then
+#    mv $d $targetdir
+#  fi
+#done
+#rm -rf Alpino
 

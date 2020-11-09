@@ -24,6 +24,6 @@ v_stanza=v0.1.0
 v_e2edutch=v0.1.0
 
 # Other sources
-v_alpino=Alpino-x86_64-Linux-glibc-2.23-git167-sicstus
+v_alpino=Alpino-x86_64-Linux-glibc-2.23-git172-sicstus
 v_ixa_pipes=1.1.1
 v_dbpedia_spotlight=0.7.1
