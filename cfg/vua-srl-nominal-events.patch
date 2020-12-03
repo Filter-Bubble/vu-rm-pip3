@@ -1,0 +1,31 @@
+--- download/vua-srl-dutch-nominal-events/vua-srl-dutch-additional-roles.py	2020-12-02 12:51:00.777582543 +0100
++++ download/vua-srl-dutch-nominal-events/vua-srl-dutch-additional-roles.py	2020-12-02 14:22:04.204460344 +0100
+@@ -31,15 +31,8 @@
+ # revision version 2.0: module indication must be added to existing srl layer.
+ my_parser.add_linguistic_processor('srl', lp)
+ 
+-# Create an index of the role ids
+-role_index = 0
+-for pred in my_parser.get_predicates():
+-    for role in pred.get_roles():
+-        #FIXME: assumes roles are of form `r1' (currently standard)
+-        role_number = role.get_id()[1:]
+-        if int(role_number) > role_index:
+-                role_index = int(role_number)
+-
++# Keep track of the number of roles added, so we can assign unique ID's
++roles_added = 0
+ 
+ depextractor = my_parser.get_dependency_extractor()
+ deps = depextractor.relations_for_term
+@@ -70,8 +63,8 @@
+                                 else:
+                                     my_role = 'ArgM'
+                                 new_role = Crole()
+-                                role_index += 1
+-                                new_role.set_id('r' + str(role_index))
++                                roles_added += 1
++                                new_role.set_id('r_add_' + str(roles_added))
+                                 new_role.set_sem_role(my_role)
+                                 role_span = Cspan()
+                                 #target should be preposition and all its dependents (up to the edges of graph)

@@ -1,0 +1,11 @@
+--- work/svm_hideo.c	2004-09-03 22:00:26.000000000 +0200
++++ work/svm_hideo.c	2020-12-02 15:58:10.265272826 +0100
+@@ -31,8 +31,6 @@
+ 
+ /* Common Block Declarations */
+ 
+-long verbosity;
+-
+ # define PRIMAL_OPTIMAL      1
+ # define DUAL_OPTIMAL        2
+ # define MAXITER_EXCEEDED    3

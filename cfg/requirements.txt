@@ -3,3 +3,5 @@ lxml
 PyYAML==5.1
 requests==2.21.0
 six==1.12.0
+git+git://github.com/Filter-Bubble/stanza_wrapper@0438886
+git+git://github.com/Filter-Bubble/e2e-Dutch.git@5ab10ba

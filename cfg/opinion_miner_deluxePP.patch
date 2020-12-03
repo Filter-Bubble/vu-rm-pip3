@@ -1,0 +1,18 @@
+--- download/opinion_miner_deluxePP/path_crf.py
++++ download/opinion_miner_deluxePP/path_crf.py
+@@ -1 +1 @@
+-PATH_TO_CRF_TEST='/home/arnoult/vu-rm-pip3/components/python/opinion_miner_deluxePP/crf_lib/CRF++-0.58/crf_test'
++PATH_TO_CRF_TEST='crf_test'
+--- download/opinion_miner_deluxePP/polarity_classifier.py
++++ download/opinion_miner_deluxePP/polarity_classifier.py
+@@ -16,8 +16,8 @@ TRAIN_FILE='training_file.txt'
+ MODEL_FILE='model.bin'
+ INDEX_FILE='index_features.bin'
+ 
+-SVM_LEARN = os.path.join(__here__,'svm_light','svm_learn')
+-SVM_CLASSIFY = os.path.join(__here__,'svm_light','svm_classify')
++SVM_LEARN = 'svm_learn'
++SVM_CLASSIFY = 'svm_light','svm_classify'
+ 
+ 
+ 

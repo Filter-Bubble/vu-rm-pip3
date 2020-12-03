@@ -1,0 +1,11 @@
+--- download/libsvm/python/svm.py	2020-12-02 12:26:13.938143114 +0100
++++ download/libsvm/python/svm.py	2020-12-02 12:26:43.051133577 +0100
+@@ -27,7 +27,7 @@
+ 	if sys.platform == 'win32':
+ 		libsvm = CDLL(path.join(dirname, r'..\windows\libsvm.dll'))
+ 	else:
+-		libsvm = CDLL(path.join(dirname, '../libsvm.so.2'))
++		libsvm = CDLL(path.join(dirname, './libsvm.so.2'))
+ except:
+ # For unix the prefix 'lib' is not considered.
+ 	if find_library('svm'):

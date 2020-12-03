@@ -1,0 +1,27 @@
+--- download/svm_wsd/dsc_wsd_tagger.py	2020-12-02 11:55:00.430295870 +0100
++++ download/svm_wsd/dsc_wsd_tagger.py	2020-12-02 11:54:50.328311357 +0100
+@@ -18,15 +18,7 @@
+ from operator import itemgetter
+ from xml.etree.ElementTree import ElementTree, Element
+ 
+-## Code for seting the paths for the local installation of 
+-
+-#Code for importing svmutil
+-this_folder = os.path.dirname(__file__)
+-libsvmfolder = os.path.join(this_folder,'lib','libsvm','python')
+-sys.path.append(libsvmfolder)
+ from svmutil import *
+-###########################
+-
+ 
+ __version = '1.2'
+ __modified = '20jan2015'
+@@ -34,7 +26,7 @@
+ POS_NOUN = 'n'
+ POS_VERB = 'v'
+ POS_ADJ = 'a'
+-MODELS_FOLDER = os.path.join(this_folder,'models')
++MODELS_FOLDER = os.path.join('${resourcesdir}','svm_wsd', 'models')
+ NAF_INPUT = 'naf'
+ 
+ ######## CHANGES ###########
